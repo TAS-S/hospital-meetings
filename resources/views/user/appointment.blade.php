@@ -2,37 +2,44 @@
     <div class="container">
       <h1 class="text-center wow fadeInUp">Make an Appointment</h1>
 
-      <form class="main-form">
+      <form class="main-form" action="{{ url('appointment') }}" method="POST">
+
+        @csrf
+
         <div class="row mt-5 ">
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
-            <input type="text" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Full name">
+            <input type="text" name="name" class="form-control" placeholder="Full name" required>
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight">
-            <input type="text" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Email address..">
+            <input type="text" name="email" class="form-control" placeholder="Email address.." required>
           </div>
-          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <input type="date" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms" required>
+            <input type="date" name="date" class="form-control">
           </div>
-          <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
-            <select name="departement" id="departement" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms" required>
+            <select name="doctor" id="departement" class="custom-select" required>
+
+                <option> ---Select doctor--- </option>
 
                 @foreach($doctor as $doctors)
 
-                <option value="{{ $doctors->speciality }}">{{ $doctors->speciality }}</option>
+                <option value="{{ $doctors->name }}">{{ $doctors->name }} - {{ $doctors->speciality }}</option>
 
               @endforeach
 
             </select>
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-            <input type="text" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Number..">
+            <input type="text" name="phone" class="form-control" placeholder="Your phone number" required>
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-            <textarea name="message" id="message" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" rows="6" placeholder="Enter message.."></textarea>
+            <textarea name="message" id="message" class="form-control" rows="6" placeholder="Enter message.."></textarea>
           </div>
         </div>
 
+
         <button type="submit" class="btn btn-primary mt-3 wow zoomIn">Submit Request</button>
+
       </form>
     </div>
   </div>

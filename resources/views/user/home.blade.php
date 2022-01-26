@@ -87,6 +87,11 @@
 
             @auth
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('myappointment') }}" style="background-color: red; color:white">My Appointments</a>
+              </li>
+
+
             <x-app-layout>
 
             </x-app-layout>
@@ -111,6 +116,24 @@
       </div> <!-- .container -->
     </nav>
   </header>
+
+  @if (session()->has('message'))
+
+
+  {{-- <div class="flex justify-between text-blue-200 shadow-inner rounded p-3">
+      <p class="self-center"><strong>Info </strong>{{ session()->get('message') }}</p>
+      <strong class="text-xl align-center cursor-pointer alert-del">&times;</strong>
+  </div> --}}
+
+   <div class="alert alert-success">
+        <button class="close" data-dismiss="alert">
+            X
+        </button>
+        {{ session()->get('message') }}
+
+    </div>
+
+  @endif
 
   <div class="page-hero bg-image overlay-dark" style="background-image: url(../assets/img/bg_image_1.jpg);">
     <div class="hero-section">
