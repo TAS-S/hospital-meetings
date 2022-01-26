@@ -26,11 +26,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('/add_doctor_view',[AdminController::class,'addview']);
 
+Route::get('/show_doctor',[AdminController::class,'show_doctor']);
+
 Route::get('/show_appointment',[AdminController::class,'show_appointment']);
 
 Route::get('/approved/{id}',[AdminController::class,'approved']);
 
 Route::get('/cancelled/{id}',[AdminController::class,'cancelled']);
+
+Route::get('/delete_doctor/{id}',[AdminController::class,'delete_doctor']);
 
 Route::post('/upload_doctor',[AdminController::class,'upload']);
 
