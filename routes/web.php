@@ -28,6 +28,10 @@ Route::get('/add_doctor_view',[AdminController::class,'addview']);
 
 Route::get('/show_doctor',[AdminController::class,'show_doctor']);
 
+Route::get('/update_doctor/{id}',[AdminController::class,'update_doctor']);
+
+Route::post('/edit_doctor/{id}',[AdminController::class,'edit_doctor']);
+
 Route::get('/show_appointment',[AdminController::class,'show_appointment']);
 
 Route::get('/approved/{id}',[AdminController::class,'approved']);
